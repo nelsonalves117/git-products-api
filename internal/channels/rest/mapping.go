@@ -1,8 +1,6 @@
 package rest
 
 import (
-	"time"
-
 	"github.com/nelsonalves117/go-products-api/internal/canonical"
 )
 
@@ -22,6 +20,6 @@ func toResponse(product canonical.Product) productResponse {
 		Category:  product.Category,
 		Price:     product.Price,
 		Stock:     product.Stock,
-		CreatedAt: product.CreatedAt.Format(time.RFC3339),
+		CreatedAt: product.CreatedAt,
 	}
 }

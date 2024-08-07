@@ -23,6 +23,6 @@ func Parse() error {
 	return nil
 }
 
-func Get() cfg {
+func Get() cfg { // Publico? - Perguntar
 	return config
 }
