@@ -1,2 +1,2 @@
-port: 8080
+port: 3001
 connection_string: "mongodb://root:password@mongodb:27017"
