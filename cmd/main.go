@@ -14,6 +14,6 @@ func main() {
 
 	err := server.Start()
 	if err != nil {
-		log.Panic().Err(err).Msg("An error occurred while trying to start the server")
+		log.Panic().Err(err).Msg("an error occurred while trying to start the server")
 	}
 }
