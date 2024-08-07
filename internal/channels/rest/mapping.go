@@ -11,6 +11,7 @@ func toCanonical(product productRequest) canonical.Product {
 		Name:     product.Name,
 		Category: product.Category,
 		Price:    product.Price,
+		Stock:    product.Stock,
 	}
 }
 
@@ -20,6 +21,7 @@ func toResponse(product canonical.Product) productResponse {
 		Name:      product.Name,
 		Category:  product.Category,
 		Price:     product.Price,
+		Stock:     product.Stock,
 		CreatedAt: product.CreatedAt.Format(time.RFC3339),
 	}
 }

@@ -121,6 +121,7 @@ func (repo *repository) UpdateProduct(id string, product canonical.Product) (can
 			"name":     product.Name,
 			"category": product.Category,
 			"price":    product.Price,
+			"stock":    product.Stock,
 		},
 	}
 

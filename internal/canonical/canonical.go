@@ -7,5 +7,6 @@ type Product struct {
 	Name      string    `bson:"name"`
 	Category  string    `bson:"category"`
 	Price     float32   `bson:"price"`
+	Stock     int       `bson:"stock"`
 	CreatedAt time.Time `bson:"created_at"`
 }
