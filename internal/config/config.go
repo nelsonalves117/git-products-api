@@ -18,7 +18,7 @@ type cfg struct {
 func Parse() error {
 	err := fig.Load(&config, fig.File("config/config.yaml"))
 	if err != nil {
-		return fmt.Errorf("an error occurred when trying to parse config file %w", err)
+		return fmt.Errorf("an error occurred while trying to parse config file %w", err)
 	}
 	return nil
 }

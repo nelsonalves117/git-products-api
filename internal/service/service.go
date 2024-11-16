@@ -32,7 +32,7 @@ func New() Service {
 func (service *service) GetAllProducts() ([]canonical.Product, error) {
 	product, err := service.repo.GetAllProducts()
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to get all products")
+		logrus.WithError(err).Error("error occurred while trying to get all products")
 		return []canonical.Product{}, err
 	}
 
@@ -42,7 +42,7 @@ func (service *service) GetAllProducts() ([]canonical.Product, error) {
 func (service *service) GetProductsByCategory(category string) ([]canonical.Product, error) {
 	product, err := service.repo.GetProductsByCategory(category)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to get a product")
+		logrus.WithError(err).Error("error occurred while trying to get a product")
 		return []canonical.Product{}, err
 	}
 
@@ -52,7 +52,7 @@ func (service *service) GetProductsByCategory(category string) ([]canonical.Prod
 func (service *service) GetProductById(id string) (canonical.Product, error) {
 	product, err := service.repo.GetProductById(id)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to get a product")
+		logrus.WithError(err).Error("error occurred while trying to get a product")
 		return canonical.Product{}, err
 	}
 
@@ -65,7 +65,7 @@ func (service *service) CreateProduct(product canonical.Product) (canonical.Prod
 
 	product, err := service.repo.CreateProduct(product)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to create a product")
+		logrus.WithError(err).Error("error occurred while trying to create a product")
 		return canonical.Product{}, err
 	}
 
@@ -75,7 +75,7 @@ func (service *service) CreateProduct(product canonical.Product) (canonical.Prod
 func (service *service) UpdateProduct(id string, product canonical.Product) (canonical.Product, error) {
 	product, err := service.repo.UpdateProduct(id, product)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to update a product")
+		logrus.WithError(err).Error("error occurred while trying to update a product")
 		return canonical.Product{}, err
 	}
 
@@ -85,7 +85,7 @@ func (service *service) UpdateProduct(id string, product canonical.Product) (can
 func (service *service) DeleteProduct(id string) error {
 	product, err := service.repo.GetProductById(id)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to get a product")
+		logrus.WithError(err).Error("error occurred while trying to get a product")
 		return err
 	}
 
@@ -95,7 +95,7 @@ func (service *service) DeleteProduct(id string) error {
 
 	err = service.repo.DeleteProduct(id)
 	if err != nil {
-		logrus.WithError(err).Error("error occurred when trying to delete a product")
+		logrus.WithError(err).Error("error occurred while trying to delete a product")
 		return err
 	}
 

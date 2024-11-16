@@ -45,7 +45,7 @@ func TestGetAllProducts_Success(t *testing.T) {
 func TestGetAllProducts_Error(t *testing.T) {
 	mockRepo := new(MockRepository)
 
-	mockRepo.On("GetAllProducts").Return([]canonical.Product{}, errors.New("error occurred when trying to get all products"))
+	mockRepo.On("GetAllProducts").Return([]canonical.Product{}, errors.New("error occurred while trying to get all products"))
 
 	service := &service{
 		repo: mockRepo,
@@ -55,7 +55,7 @@ func TestGetAllProducts_Error(t *testing.T) {
 
 	assert.NotNil(t, err)
 	assert.Empty(t, products)
-	assert.Equal(t, "error occurred when trying to get all products", err.Error())
+	assert.Equal(t, "error occurred while trying to get all products", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
@@ -96,7 +96,7 @@ func TestGetProductsByCategory_Success(t *testing.T) {
 func TestGetProductsByCategory_Error(t *testing.T) {
 	mockRepo := new(MockRepository)
 
-	mockRepo.On("GetProductsByCategory", "testCategory").Return([]canonical.Product{}, errors.New("error occurred when trying to get a product"))
+	mockRepo.On("GetProductsByCategory", "testCategory").Return([]canonical.Product{}, errors.New("error occurred while trying to get a product"))
 
 	service := &service{
 		repo: mockRepo,
@@ -106,7 +106,7 @@ func TestGetProductsByCategory_Error(t *testing.T) {
 
 	assert.NotNil(t, err)
 	assert.Empty(t, products)
-	assert.Equal(t, "error occurred when trying to get a product", err.Error())
+	assert.Equal(t, "error occurred while trying to get a product", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
@@ -146,7 +146,7 @@ func TestGetProductById_Success(t *testing.T) {
 func TestGetProductById_Error(t *testing.T) {
 	mockRepo := new(MockRepository)
 
-	mockRepo.On("GetProductById", "xpto").Return(canonical.Product{}, errors.New("error occurred when trying to get a product"))
+	mockRepo.On("GetProductById", "xpto").Return(canonical.Product{}, errors.New("error occurred while trying to get a product"))
 
 	service := &service{
 		repo: mockRepo,
@@ -156,7 +156,7 @@ func TestGetProductById_Error(t *testing.T) {
 
 	assert.NotNil(t, err)
 	assert.Empty(t, product)
-	assert.Equal(t, "error occurred when trying to get a product", err.Error())
+	assert.Equal(t, "error occurred while trying to get a product", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
@@ -210,7 +210,7 @@ func TestCreateProduct_Error(t *testing.T) {
 
 	mockRepo.On("CreateProduct", mock.MatchedBy(func(product canonical.Product) bool {
 		return product.Name == "test" && product.Category == "testCategory" && product.Price == 200 && product.Stock == 10
-	})).Return(canonical.Product{}, errors.New("error occurred when trying to create a product"))
+	})).Return(canonical.Product{}, errors.New("error occurred while trying to create a product"))
 
 	service := &service{
 		repo: mockRepo,
@@ -220,7 +220,7 @@ func TestCreateProduct_Error(t *testing.T) {
 
 	assert.NotNil(t, err)
 	assert.Empty(t, product)
-	assert.Equal(t, "error occurred when trying to create a product", err.Error())
+	assert.Equal(t, "error occurred while trying to create a product", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
@@ -277,7 +277,7 @@ func TestUpdateProduct_Error(t *testing.T) {
 
 	mockRepo.On("UpdateProduct", "xpto", mock.MatchedBy(func(product canonical.Product) bool {
 		return product.Name == "test" && product.Category == "testCategory" && product.Price == 200 && product.Stock == 10
-	})).Return(canonical.Product{}, errors.New("error occurred when trying to update a product"))
+	})).Return(canonical.Product{}, errors.New("error occurred while trying to update a product"))
 
 	service := &service{
 		repo: mockRepo,
@@ -287,7 +287,7 @@ func TestUpdateProduct_Error(t *testing.T) {
 
 	assert.NotNil(t, err)
 	assert.Empty(t, product)
-	assert.Equal(t, "error occurred when trying to update a product", err.Error())
+	assert.Equal(t, "error occurred while trying to update a product", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
@@ -333,7 +333,7 @@ func TestDeleteProduct_Error(t *testing.T) {
 
 	mockRepo.On("GetProductById", "xpto").Return(productTest, nil)
 
-	mockRepo.On("DeleteProduct", "xpto").Return(errors.New("error occurred when trying to delete a product"))
+	mockRepo.On("DeleteProduct", "xpto").Return(errors.New("error occurred while trying to delete a product"))
 
 	service := &service{
 		repo: mockRepo,
@@ -342,7 +342,7 @@ func TestDeleteProduct_Error(t *testing.T) {
 	err := service.DeleteProduct("xpto")
 
 	assert.NotNil(t, err)
-	assert.Equal(t, "error occurred when trying to delete a product", err.Error())
+	assert.Equal(t, "error occurred while trying to delete a product", err.Error())
 
 	mockRepo.AssertExpectations(t)
 }
