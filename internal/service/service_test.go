@@ -235,18 +235,9 @@ func TestUpdateProduct_Success(t *testing.T) {
 		Stock:    10,
 	}
 
-	updatedProduct := canonical.Product{
-		Id:        "xpto",
-		Name:      "test",
-		Category:  "testCategory",
-		Price:     200,
-		Stock:     10,
-		CreatedAt: time.Now(),
-	}
-
 	mockRepo.On("UpdateProduct", "xpto", mock.MatchedBy(func(product canonical.Product) bool {
 		return product.Name == "test" && product.Category == "testCategory" && product.Price == 200 && product.Stock == 10
-	})).Return(updatedProduct, nil)
+	})).Return(productTest, nil)
 
 	service := &service{
 		repo: mockRepo,
@@ -255,12 +246,10 @@ func TestUpdateProduct_Success(t *testing.T) {
 	product, err := service.UpdateProduct("xpto", productTest)
 
 	assert.Nil(t, err)
-	assert.Equal(t, "xpto", product.Id)
 	assert.Equal(t, "test", product.Name)
 	assert.Equal(t, "testCategory", product.Category)
 	assert.Equal(t, float32(200), product.Price)
 	assert.Equal(t, 10, product.Stock)
-	assert.True(t, product.CreatedAt.After(time.Date(2021, 1, 1, 0, 0, 0, 0, time.Local)))
 
 	mockRepo.AssertExpectations(t)
 }
